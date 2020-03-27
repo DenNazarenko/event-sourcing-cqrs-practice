@@ -4,6 +4,7 @@ import com.fooddelivery.order.command.ConfirmOrderPaymentCommand;
 import com.fooddelivery.order.command.CreateOrderCommand;
 import com.fooddelivery.order.event.ConfirmOrderPaymentEvent;
 import com.fooddelivery.order.event.CreateOrderEvent;
+import lombok.Getter;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
@@ -11,6 +12,7 @@ import org.axonframework.modelling.command.AggregateLifecycle;
 import org.axonframework.spring.stereotype.Aggregate;
 
 @Aggregate
+@Getter
 public class OrderAggregate {
 
     @AggregateIdentifier

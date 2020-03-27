@@ -17,6 +17,10 @@ public class OrderCommandService {
 
     private final CommandGateway commandGateway;
 
+    public CompletableFuture<String> createOrder() {
+        return commandGateway.send(new CreateOrderCommand(UUID.randomUUID().toString()));
+    }
+
     public CompletableFuture<String> confirmPayment(String orderId) {
         return commandGateway.send(new ConfirmOrderPaymentCommand(orderId));
     }

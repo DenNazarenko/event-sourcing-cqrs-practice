@@ -1,5 +1,6 @@
 package com.fooddelivery.order.controller;
 
+import com.fooddelivery.order.dto.Order;
 import com.fooddelivery.order.service.OrderCommandService;
 import com.fooddelivery.order.service.OrderQueryService;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,11 @@ public class OrderQueryController {
     @GetMapping("{orderId}/events")
     public List<Object> listEventsForOrder(@PathVariable("orderId") String orderId) {
         return orderQueryService.listEventsForOrder(orderId);
+    }
+
+    @GetMapping("{orderId}")
+    public Order getOrder(@PathVariable("orderId") String orderId) {
+        return orderQueryService.getOrder(orderId);
     }
 
 }
