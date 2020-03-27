@@ -1,13 +1,26 @@
 plugins {
     id 'org.springframework.boot' version '2.2.5.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id "io.freefair.lombok" version "4.1.6"
     id 'java'
 }
 
-group = 'com.dnazarenko'
-version = '0.0.1'
-sourceCompatibility = '11'
+allprojects {
+    group = 'com.fooddelivery'
+    version = '0.1'
 
-repositories {
-    mavenCentral()
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'java'
+    apply plugin: 'io.freefair.lombok'
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.boot:spring-boot-dependencies:2.2.5.RELEASE"
+        }
+    }
 }

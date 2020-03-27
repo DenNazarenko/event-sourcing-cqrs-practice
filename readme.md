@@ -1,3 +1,3 @@
 ### Event sourcing
 
-It's learing project for practicing building systems based on even sourcing approuch
+It's a learning project for practicing of building systems based on Even Sourcing and CQRS
