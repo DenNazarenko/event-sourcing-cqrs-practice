@@ -1,8 +1,7 @@
 package com.fooddelivery.order.persistence;
 
 import com.fooddelivery.order.aggregate.OrderAggregate;
-import com.fooddelivery.order.event.BaseEvent;
-import com.fooddelivery.order.event.CreateOrderEvent;
+import com.fooddelivery.order.event.OrderEvent;
 import lombok.RequiredArgsConstructor;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.eventsourcing.EventSourcingRepository;
@@ -21,7 +20,7 @@ public class OrderEntityManager {
     private EventSourcingRepository<OrderAggregate> orderAggregateEventSourcingRepository;
 
     @EventSourcingHandler
-    public void on(BaseEvent event) {
+    public void on(OrderEvent event) {
         OrderAggregate orderAggregate = orderAggregateEventSourcingRepository.load(event.id)
                 .getWrappedAggregate().getAggregateRoot();
         OrderQueryEntity orderQueryEntity = buildOrderQueryEntity(orderAggregate);
@@ -33,6 +32,7 @@ public class OrderEntityManager {
                 .orElse(new OrderQueryEntity());
         orderQueryEntity.setId(orderAggregate.getId());
         orderQueryEntity.setStatus(orderAggregate.getStatus());
+        orderQueryEntity.setAmountByProductId(orderAggregate.getAmountByProductId());
         return orderQueryEntity;
     }
 }

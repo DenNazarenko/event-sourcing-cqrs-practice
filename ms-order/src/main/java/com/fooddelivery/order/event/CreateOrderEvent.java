@@ -1,8 +1,13 @@
 package com.fooddelivery.order.event;
 
-public class CreateOrderEvent extends BaseEvent {
+import java.util.Map;
 
-    public CreateOrderEvent(String id) {
+public class CreateOrderEvent extends OrderEvent {
+
+    public final Map<String, Integer> amountByProductId;
+
+    public CreateOrderEvent(String id, Map<String, Integer> amountByProductId) {
         super(id);
+        this.amountByProductId = amountByProductId;
     }
 }

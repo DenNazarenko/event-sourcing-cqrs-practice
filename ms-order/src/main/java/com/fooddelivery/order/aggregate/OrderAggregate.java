@@ -11,29 +11,32 @@ import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.modelling.command.AggregateLifecycle;
 import org.axonframework.spring.stereotype.Aggregate;
 
+import java.util.Map;
+
 @Aggregate
 @Getter
 public class OrderAggregate {
 
     @AggregateIdentifier
-    private String id; //todo try make them final
+    private String id;
 
     private OrderStatus status;
 
-    //todo add field
+    private Map<String, Integer> amountByProductId;
 
     public OrderAggregate() {
     }
 
     @CommandHandler
     public OrderAggregate(CreateOrderCommand createOrderCommand) {
-        AggregateLifecycle.apply(new CreateOrderEvent(createOrderCommand.id));
+        AggregateLifecycle.apply(new CreateOrderEvent(createOrderCommand.id, createOrderCommand.amountByProductId));
     }
 
     @EventSourcingHandler
     public void on(CreateOrderEvent createOrderEvent) {
         this.id = createOrderEvent.id;
         this.status = OrderStatus.CREATED;
+        this.amountByProductId = createOrderEvent.amountByProductId;
     }
 
     @CommandHandler

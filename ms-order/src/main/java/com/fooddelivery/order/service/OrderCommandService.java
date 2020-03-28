@@ -2,10 +2,9 @@ package com.fooddelivery.order.service;
 
 import com.fooddelivery.order.command.ConfirmOrderPaymentCommand;
 import com.fooddelivery.order.command.CreateOrderCommand;
-import com.fooddelivery.order.event.CreateOrderEvent;
+import com.fooddelivery.order.dto.CreateOrderRequest;
 import lombok.RequiredArgsConstructor;
 import org.axonframework.commandhandling.gateway.CommandGateway;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -17,8 +16,8 @@ public class OrderCommandService {
 
     private final CommandGateway commandGateway;
 
-    public CompletableFuture<String> createOrder() {
-        return commandGateway.send(new CreateOrderCommand(UUID.randomUUID().toString()));
+    public CompletableFuture<String> createOrder(CreateOrderRequest createOrderRequest) {
+        return commandGateway.send(new CreateOrderCommand(UUID.randomUUID().toString(), createOrderRequest.amountByProductId));
     }
 
     public CompletableFuture<String> confirmPayment(String orderId) {
