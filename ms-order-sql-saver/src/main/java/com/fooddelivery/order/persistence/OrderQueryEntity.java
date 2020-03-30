@@ -1,6 +1,6 @@
 package com.fooddelivery.order.persistence;
 
-import com.fooddelivery.order.aggregate.OrderStatus;
+import com.fooddelivery.order.model.OrderStatus;
 import lombok.Getter;
 import lombok.Setter;
 

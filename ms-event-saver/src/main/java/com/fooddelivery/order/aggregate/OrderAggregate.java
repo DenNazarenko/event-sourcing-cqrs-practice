@@ -15,7 +15,7 @@ import java.util.Map;
 
 @Aggregate
 @Getter
-public class OrderAggregate {
+public class OrderAggregate { //todo get rid of axon. put data in hadoop
 
     @AggregateIdentifier
     private String id;

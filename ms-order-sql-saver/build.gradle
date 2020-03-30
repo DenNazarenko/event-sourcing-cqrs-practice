@@ -10,12 +10,12 @@ repositories {
 }
 
 dependencies {
+    implementation project(":common-events")
+
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-actuator'
-    implementation('org.axonframework:axon-spring-boot-starter:4.0.4') {
-        exclude group: 'org.axonframework', module: 'axon-server-connector'
-    }
+    implementation 'org.springframework.kafka:spring-kafka'
+    implementation 'com.fasterxml.jackson.core:jackson-core'
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
     runtimeOnly 'com.h2database:h2'
 }
 
