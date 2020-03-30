@@ -1,4 +1,4 @@
-package com.fooddelivery.order.config;
+package com.fooddelivery.order;
 
 import com.fooddelivery.order.event.BaseEvent;
 import org.apache.kafka.clients.consumer.ConsumerConfig;

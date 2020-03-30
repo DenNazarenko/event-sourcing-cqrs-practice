@@ -2,4 +2,8 @@ rootProject.name = 'eventsourcing'
 
 include 'ms-event-saver'
 include 'ms-order-sql-saver'
+include 'ms-order-sql-requester'
+
 include 'common-events'
+include 'common-hibernate'
+include 'common-models'

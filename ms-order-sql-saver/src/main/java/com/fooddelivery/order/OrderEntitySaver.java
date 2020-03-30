@@ -1,9 +1,11 @@
-package com.fooddelivery.order.persistence;
+package com.fooddelivery.order;
 
 import com.fooddelivery.order.event.BaseEvent;
 import com.fooddelivery.order.event.ConfirmOrderPaymentEvent;
 import com.fooddelivery.order.event.CreateOrderEvent;
 import com.fooddelivery.order.model.OrderStatus;
+import com.fooddelivery.order.persistence.OrderQueryEntity;
+import com.fooddelivery.order.persistence.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;

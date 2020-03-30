@@ -1,6 +1,6 @@
-package com.fooddelivery.order.dto;
+package com.fooddelivery.order;
 
-import com.fooddelivery.order.aggregate.OrderStatus;
+import com.fooddelivery.order.model.OrderStatus;
 import lombok.Data;
 
 import java.util.Map;
