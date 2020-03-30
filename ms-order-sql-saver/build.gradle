@@ -16,7 +16,7 @@ dependencies {
     implementation 'org.springframework.kafka:spring-kafka'
     implementation 'com.fasterxml.jackson.core:jackson-core'
     implementation 'com.fasterxml.jackson.core:jackson-databind'
-    runtimeOnly 'com.h2database:h2'
+    implementation 'org.postgresql:postgresql'
 }
 
 test {
