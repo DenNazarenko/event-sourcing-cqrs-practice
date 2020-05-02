@@ -14,6 +14,6 @@ public class EventProducer {
 
     @EventSourcingHandler
     public void on(BaseEvent event) {
-        kafkaTemplate.send("test", event);
+        kafkaTemplate.send("order-events", event);
     }
 }

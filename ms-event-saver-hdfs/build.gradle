@@ -1,0 +1,21 @@
+plugins {
+    id 'org.springframework.boot'
+}
+
+group = 'com.fooddelivery'
+version = '0.0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(":common-events")
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.kafka:spring-kafka'
+}
+
+test {
+    useJUnitPlatform()
+}

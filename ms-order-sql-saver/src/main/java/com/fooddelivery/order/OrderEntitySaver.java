@@ -18,7 +18,7 @@ public class OrderEntitySaver {
 
     private final OrderRepository orderRepository;
 
-    @KafkaListener(topics = "test", groupId = "group1")
+    @KafkaListener(topics = "order-events", groupId = "group1")
     public void on(BaseEvent event) { //todo switch to java 14 and try pattern matching
         log.info("Event received: " + event.getClass().getName());
         if (event instanceof CreateOrderEvent) {
