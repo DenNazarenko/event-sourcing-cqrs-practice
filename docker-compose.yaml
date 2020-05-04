@@ -3,11 +3,13 @@ services:
 
   zookeeper:
     image: wurstmeister/zookeeper
+    container_name: eventsourcing_zookeeper
     ports:
       - "2181:2181"
 
   kafka:
     image: wurstmeister/kafka
+    container_name: eventsourcing_kafka
     ports:
       - "9092:9092"
     depends_on:
@@ -21,8 +23,35 @@ services:
 
   postgres:
     image: postgres
+    container_name: eventsourcing_postgres
     ports:
       - "5432:5432"
-    restart: always
     environment:
       POSTGRES_PASSWORD: postgres
+
+  hadoop-namenode:
+    image: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8
+    container_name: eventsourcing_namenode
+    ports:
+      - 9870:9870
+      - 9000:9000
+    volumes:
+      - hadoop_namenode:/hadoop/dfs/name
+    environment:
+      - CLUSTER_NAME=test
+    env_file:
+      - ./hadoop.env
+
+  hadoop-datanode:
+    image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
+    container_name: eventsourcing_datanode
+    volumes:
+      - hadoop_datanode:/hadoop/dfs/data
+    environment:
+      SERVICE_PRECONDITION: "namenode:9870"
+    env_file:
+      - ./hadoop.env
+
+volumes:
+  hadoop_namenode:
+  hadoop_datanode:
